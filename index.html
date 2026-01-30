@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hey Akshu ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -51,9 +51,10 @@ body{
 
 header{padding:60px 15px 20px}
 h1{
-  font-family:'Great Vibes',cursive;
-  font-size:3rem;
-  text-shadow:0 0 15px rgba(255,255,255,0.5);
+  font-family:'Press Start 2P', cursive;
+  font-size:2rem;
+  line-height:1.4;
+  text-shadow:3px 3px 0px #ff1e56;
 }
 
 .message{
@@ -89,11 +90,13 @@ h1{
 
 /* PHOTO GALLERY */
 .gallery{ padding:30px 15px; }
-.gallery h2{
-  font-family:'Great Vibes',cursive;
-  font-size:2.2rem;
-  margin-bottom:15px;
+.gallery h2,
+#introScreen h2 {
+  font-family:'Press Start 2P', cursive;
+  font-size:1.3rem;
+  line-height:1.6;
 }
+
 .photos{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
@@ -111,12 +114,11 @@ h1{
 .photos img:hover{ transform:scale(1.08); }
 
 /* BUTTONS */
-.buttons{
-  margin:50px auto;
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  flex-wrap:wrap;
+button{
+  font-family:'Press Start 2P', cursive;
+  padding:18px 32px;
+  font-size:1rem;
+  border-radius:12px;
 }
 
 button{
