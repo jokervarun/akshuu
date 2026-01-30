@@ -2,96 +2,125 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hey Akshu ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  background: linear-gradient(135deg,#ff4e88,#ff1e56,#ff6fa3);
+  font-family:'Quicksand', sans-serif;
+  background: radial-gradient(circle at top, #ff6fa3, #ff1e56 60%);
   color:white;
   text-align:center;
   overflow-x:hidden;
 }
 
-/* Floating Hearts */
+/* ENTRY SCREEN */
+#introScreen {
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#ff4e88,#ff1e56);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  cursor:pointer;
+  text-align:center;
+  padding:20px;
+}
+#introScreen h2 {
+  font-family:'Great Vibes', cursive;
+  font-size:2.8rem;
+  margin-bottom:15px;
+}
+#introScreen p { opacity:0.9; }
+
+/* Floating hearts */
 .heart {
   position:fixed;
   bottom:-10px;
   font-size:20px;
   animation:floatUp linear forwards;
+  opacity:0.8;
 }
 @keyframes floatUp { to { transform:translateY(-110vh); opacity:0; } }
 
-header { padding:50px 15px 10px; }
+header { padding:60px 15px 20px; }
 
 h1 {
-  font-size:2.4rem;
-  animation:pulse 2s infinite;
+  font-family:'Great Vibes', cursive;
+  font-size:3.2rem;
+  text-shadow:0 0 15px rgba(255,255,255,0.5);
 }
-@keyframes pulse { 50% { transform:scale(1.05); } }
 
-.cupid {
-  font-size:2.2rem;
-  animation:bounce 1.5s infinite;
-}
-@keyframes bounce { 50% { transform:translateY(-10px); } }
+.cupid { font-size:2rem; margin-bottom:10px; }
 
 .message {
   margin:25px auto;
-  max-width:92%;
-  font-size:1rem;
-  line-height:1.7;
+  max-width:600px;
+  font-size:1.1rem;
+  line-height:1.8;
+  background:rgba(255,255,255,0.12);
+  padding:20px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
 }
 
+/* Memory Cards */
 .memories {
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  padding:15px;
-  max-width:500px;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:18px;
+  padding:20px;
+  max-width:800px;
   margin:auto;
 }
-
 .card {
-  background:rgba(255,255,255,0.15);
-  border-radius:15px;
+  background:rgba(255,255,255,0.18);
+  border-radius:18px;
   padding:18px;
-  backdrop-filter:blur(10px);
-  transition:transform 0.3s, background 0.3s;
-  font-size:0.95rem;
+  backdrop-filter:blur(12px);
+  transition:transform 0.3s, box-shadow 0.3s;
 }
-.card:active { transform:scale(1.08); background:rgba(255,255,255,0.25); }
+.card:hover {
+  transform:translateY(-6px) scale(1.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
 
+/* Buttons */
 .buttons {
   margin:35px auto;
   display:flex;
   justify-content:center;
-  align-items:center;
   gap:20px;
   flex-wrap:wrap;
-  position:relative;
-  min-height:120px;
 }
-
 button {
-  padding:14px 26px;
+  padding:14px 28px;
   font-size:1rem;
   border:none;
   border-radius:30px;
   cursor:pointer;
   transition:all 0.3s ease;
 }
-
-#yesBtn { background:#fff; color:#ff1e56; }
-#noBtn { background:#ff1e56; color:white; position:relative; }
+#yesBtn {
+  background:white;
+  color:#ff1e56;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+#noBtn {
+  background:#ff1e56;
+  color:white;
+  position:relative;
+}
 
 #successMessage {
   display:none;
-  font-size:1.4rem;
-  margin:20px 15px;
+  font-size:1.6rem;
+  margin:20px;
   animation:fadeIn 1s forwards;
 }
 @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
@@ -102,21 +131,24 @@ button {
   100% { transform:scale(2); opacity:0; }
 }
 
-/* Rose fall */
-@keyframes fall {
-  to { transform:translateY(110vh); opacity:0; }
-}
+/* Roses */
+@keyframes fall { to { transform:translateY(110vh); opacity:0; } }
 
-/* Bigger screens */
-@media (min-width:600px){
-  h1 { font-size:3rem; }
-  .message { font-size:1.15rem; }
-  .memories { grid-template-columns:repeat(4,1fr); max-width:800px; }
+/* Mobile */
+@media (max-width:600px){
+  h1 { font-size:2.5rem; }
+  .message { font-size:1rem; }
 }
 </style>
 </head>
 
 <body>
+
+<!-- Romantic Tap Screen -->
+<div id="introScreen">
+  <h2>For Akshu 💖</h2>
+  <p>Tap anywhere to open something special ✨</p>
+</div>
 
 <header>
   <div class="cupid">💘</div>
@@ -151,6 +183,14 @@ button {
 </audio>
 
 <script>
+const music=document.getElementById("bgMusic");
+
+/* Intro tap starts music */
+document.getElementById("introScreen").addEventListener("click",()=>{
+  music.play();
+  document.getElementById("introScreen").style.display="none";
+});
+
 /* Floating hearts */
 function createHeart(){
   const heart=document.createElement("div");
@@ -163,7 +203,7 @@ function createHeart(){
 }
 setInterval(createHeart,400);
 
-/* No button runs away */
+/* No button runs */
 const noBtn=document.getElementById("noBtn");
 function moveNoBtn(){
   noBtn.style.position="absolute";
@@ -173,18 +213,14 @@ function moveNoBtn(){
 noBtn.addEventListener("mouseover",moveNoBtn);
 noBtn.addEventListener("touchstart",moveNoBtn);
 
-/* Yes button celebration */
+/* Yes button magic */
 const yesBtn=document.getElementById("yesBtn");
 const successMessage=document.getElementById("successMessage");
-const music=document.getElementById("bgMusic");
 
-yesBtn.addEventListener("click", () => {
-  successMessage.style.display = "block";
+yesBtn.addEventListener("click",()=>{
+  successMessage.style.display="block";
   launchFireworks();
   startRoseShower();
-
-  music.volume = 1;
-  music.play().catch(err => console.log("Playback prevented:", err));
 });
 
 /* Fireworks */
@@ -202,7 +238,7 @@ function launchFireworks(){
   }
 }
 
-/* Rose shower */
+/* Roses */
 function startRoseShower(){
   let interval=setInterval(()=>{
     const rose=document.createElement("div");
@@ -215,7 +251,6 @@ function startRoseShower(){
     document.body.appendChild(rose);
     setTimeout(()=>rose.remove(),4000);
   },200);
-
   setTimeout(()=>clearInterval(interval),4000);
 }
 </script>
