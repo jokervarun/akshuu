@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Hey Akshu ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -28,7 +28,7 @@ body {
 header { padding:50px 15px 10px; }
 
 h1 {
-  font-size:3rem;
+  font-size:2.4rem;
   animation:pulse 2s infinite;
 }
 @keyframes pulse { 50% { transform:scale(1.05); } }
@@ -40,33 +40,33 @@ h1 {
 @keyframes bounce { 50% { transform:translateY(-10px); } }
 
 .message {
-  margin:30px auto;
-  max-width:650px;
-  font-size:1.15rem;
+  margin:25px auto;
+  max-width:92%;
+  font-size:1rem;
   line-height:1.7;
-  padding:0 15px;
 }
 
 .memories {
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:18px;
-  padding:20px;
-  max-width:800px;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  padding:15px;
+  max-width:500px;
   margin:auto;
 }
 
 .card {
   background:rgba(255,255,255,0.15);
   border-radius:15px;
-  padding:20px;
+  padding:18px;
   backdrop-filter:blur(10px);
   transition:transform 0.3s, background 0.3s;
+  font-size:0.95rem;
 }
-.card:hover { transform:scale(1.08); background:rgba(255,255,255,0.25); }
+.card:active { transform:scale(1.08); background:rgba(255,255,255,0.25); }
 
 .buttons {
-  margin:40px auto;
+  margin:35px auto;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -77,7 +77,7 @@ h1 {
 }
 
 button {
-  padding:14px 28px;
+  padding:14px 26px;
   font-size:1rem;
   border:none;
   border-radius:30px;
@@ -90,13 +90,13 @@ button {
 
 #successMessage {
   display:none;
-  font-size:1.6rem;
+  font-size:1.4rem;
   margin:20px 15px;
   animation:fadeIn 1s forwards;
 }
 @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
 
-/* Firework animation */
+/* Fireworks */
 @keyframes explode {
   0% { transform:scale(0); opacity:1; }
   100% { transform:scale(2); opacity:0; }
@@ -107,11 +107,11 @@ button {
   to { transform:translateY(110vh); opacity:0; }
 }
 
-/* Mobile Tweaks */
-@media (max-width:600px){
-  h1 { font-size:2.2rem; }
-  .message { font-size:1rem; }
-  button { width:140px; }
+/* Bigger screens */
+@media (min-width:600px){
+  h1 { font-size:3rem; }
+  .message { font-size:1.15rem; }
+  .memories { grid-template-columns:repeat(4,1fr); max-width:800px; }
 }
 </style>
 </head>
@@ -124,10 +124,10 @@ button {
 </header>
 
 <div class="message">
-  From doing potato together 🥔 to sharing pasta dates 🍝,  
-  from endless kisses 😘 to that handsome goatee I secretly love 😍 —  
-  every tiny moment with you feels like magic ✨  
-  You love small cute things… so here’s one more 💖  
+  From doing potato together 🥔 to sharing pasta dates 🍝,<br>
+  from endless kisses 😘 to that handsome goatee I secretly love 😍 —<br>
+  every tiny moment with you feels like magic ✨<br>
+  You love small cute things… so here’s one more 💖
 </div>
 
 <div class="memories">
@@ -146,7 +146,9 @@ button {
   YAYYY 💍💖 You just made me the happiest person alive!!! 🥰
 </div>
 
-<audio id="bgMusic" src="song.mp3" autoplay loop muted playsinline></audio>
+<audio id="bgMusic" loop preload="auto">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 /* Floating hearts */
@@ -161,30 +163,28 @@ function createHeart(){
 }
 setInterval(createHeart,400);
 
-/* Make music audible after first interaction */
-const music=document.getElementById("bgMusic");
-document.body.addEventListener("click",()=>{ music.muted=false; },{once:true});
-
-/* No button runs away (still works on mobile tap) */
+/* No button runs away */
 const noBtn=document.getElementById("noBtn");
-noBtn.addEventListener("mouseover",moveNoBtn);
-noBtn.addEventListener("touchstart",moveNoBtn);
 function moveNoBtn(){
   noBtn.style.position="absolute";
   noBtn.style.left=Math.random()*70+"%";
   noBtn.style.top=Math.random()*60+"px";
 }
+noBtn.addEventListener("mouseover",moveNoBtn);
+noBtn.addEventListener("touchstart",moveNoBtn);
 
 /* Yes button celebration */
 const yesBtn=document.getElementById("yesBtn");
 const successMessage=document.getElementById("successMessage");
+const music=document.getElementById("bgMusic");
 
-yesBtn.addEventListener("click",()=>{
-  successMessage.style.display="block";
+yesBtn.addEventListener("click", () => {
+  successMessage.style.display = "block";
   launchFireworks();
   startRoseShower();
-  music.muted=false;
-  music.play();
+
+  music.volume = 1;
+  music.play().catch(err => console.log("Playback prevented:", err));
 });
 
 /* Fireworks */
