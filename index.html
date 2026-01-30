@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SUPPP CUTIE PIEE❤️</title>
+<title>Hey Akshu ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -51,10 +51,21 @@ body{
 
 header{padding:60px 15px 20px}
 h1{
-  font-family:'Press Start 2P', cursive;
-  font-size:2rem;
-  line-height:1.4;
-  text-shadow:3px 3px 0px #ff1e56;
+  font-family:'Great Vibes',cursive;
+  font-size:3rem;
+  text-shadow:0 0 15px rgba(255,255,255,0.5);
+}
+
+/* TIMER */
+.timer{
+  margin-top:15px;
+  font-size:1rem;
+  font-weight:bold;
+  background:rgba(255,255,255,0.15);
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:20px;
+  backdrop-filter:blur(8px);
 }
 
 .message{
@@ -90,13 +101,11 @@ h1{
 
 /* PHOTO GALLERY */
 .gallery{ padding:30px 15px; }
-.gallery h2,
-#introScreen h2 {
-  font-family:'Press Start 2P', cursive;
-  font-size:1.3rem;
-  line-height:1.6;
+.gallery h2{
+  font-family:'Great Vibes',cursive;
+  font-size:2.2rem;
+  margin-bottom:15px;
 }
-
 .photos{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
@@ -114,11 +123,12 @@ h1{
 .photos img:hover{ transform:scale(1.08); }
 
 /* BUTTONS */
-button{
-  font-family:'Press Start 2P', cursive;
-  padding:18px 32px;
-  font-size:1rem;
-  border-radius:12px;
+.buttons{
+  margin:50px auto;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
 }
 
 button{
@@ -168,6 +178,7 @@ button{
 
 <header>
   <h1>Hey Akshu ❤️</h1>
+  <div id="valentineTimer" class="timer"></div>
 </header>
 
 <div class="message">
@@ -192,6 +203,8 @@ button{
     <img src="photo2.jpeg">
     <img src="photo3.jpeg">
     <img src="photo4.jpeg">
+    <img src="photo5.jpeg">
+    <img src="photo6.jpeg">
   </div>
 </div>
 
@@ -201,7 +214,7 @@ button{
 </div>
 
 <div id="successMessage">
-  Sooo when can i hit 😛
+  YAYYY 💍💖 You just made me the happiest person alive!!! 🥰
 </div>
 
 <audio id="bgMusic" loop preload="auto">
@@ -214,6 +227,26 @@ document.getElementById("introScreen").addEventListener("click",()=>{
   music.play();
   document.getElementById("introScreen").style.display="none";
 });
+
+/* Valentine Countdown */
+function updateValentineTimer() {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  let valentine = new Date(`February 14, ${currentYear} 00:00:00`);
+  if (now > valentine) {
+    valentine = new Date(`February 14, ${currentYear + 1} 00:00:00`);
+  }
+  const diff = valentine - now;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("valentineTimer").innerHTML =
+    `⏳ Countdown to Valentine’s Day:<br>${days}d ${hours}h ${minutes}m ${seconds}s 💖`;
+}
+setInterval(updateValentineTimer, 1000);
+updateValentineTimer();
 
 /* Floating background hearts */
 function createBgHeart(){
