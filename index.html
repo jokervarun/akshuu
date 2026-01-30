@@ -1,224 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hey Akshu ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hey Akshu ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
-    body {
-      height: 100vh;
-      overflow-x: hidden;
-      background: linear-gradient(135deg, #ff4e88, #ff1e56, #ff6fa3);
-      color: white;
-      text-align: center;
-    }
+body {
+  background: linear-gradient(135deg,#ff4e88,#ff1e56,#ff6fa3);
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
+}
 
-    /* Floating hearts */
-    .heart {
-      position: fixed;
-      bottom: -10px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.7;
-    }
+/* Floating Hearts */
+.heart {
+  position:fixed;
+  bottom:-10px;
+  font-size:20px;
+  animation:floatUp linear forwards;
+}
+@keyframes floatUp {
+  to { transform:translateY(-110vh); opacity:0; }
+}
 
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 0.7; }
-      100% { transform: translateY(-110vh); opacity: 0; }
-    }
+header { padding-top:60px; }
 
-    header {
-      padding-top: 60px;
-    }
+h1 {
+  font-size:3rem;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { transform:scale(1); }
+  50% { transform:scale(1.05); }
+}
 
-    h1 {
-      font-size: 3rem;
-      animation: pulse 2s infinite;
-    }
+.cupid {
+  font-size:2rem;
+  animation:bounce 1.5s infinite;
+}
+@keyframes bounce {
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
+.message {
+  margin:40px auto;
+  max-width:600px;
+  font-size:1.2rem;
+  line-height:1.6;
+}
 
-    .cupid {
-      font-size: 2rem;
-      animation: bounce 1.5s infinite;
-    }
+.memories {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:20px;
+  padding:20px;
+  max-width:800px;
+  margin:auto;
+}
 
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+.card {
+  background:rgba(255,255,255,0.15);
+  border-radius:15px;
+  padding:20px;
+  backdrop-filter:blur(10px);
+  transition:transform 0.3s, background 0.3s;
+}
+.card:hover {
+  transform:scale(1.08);
+  background:rgba(255,255,255,0.25);
+}
 
-    .message {
-      margin: 40px auto;
-      max-width: 600px;
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
+.buttons {
+  margin:40px 0;
+  position:relative;
+  height:140px;
+}
 
-    .memories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
+button {
+  padding:12px 25px;
+  font-size:1rem;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  position:absolute;
+  transition:all 0.3s ease;
+}
 
-    .card {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 15px;
-      padding: 20px;
-      backdrop-filter: blur(10px);
-      transition: transform 0.3s, background 0.3s;
-    }
+#yesBtn {
+  background:#fff;
+  color:#ff1e56;
+  left:35%;
+}
 
-    .card:hover {
-      transform: scale(1.08);
-      background: rgba(255, 255, 255, 0.25);
-    }
+#noBtn {
+  background:#ff1e56;
+  color:white;
+  left:55%;
+}
 
-    .buttons {
-      margin: 40px 0;
-      position: relative;
-      height: 120px;
-    }
+#successMessage {
+  display:none;
+  font-size:1.6rem;
+  margin-top:20px;
+  animation:fadeIn 1s forwards;
+}
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
 
-    button {
-      padding: 12px 25px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      position: absolute;
-      transition: all 0.3s ease;
-    }
+/* Firework animation */
+@keyframes explode {
+  0% { transform:scale(0); opacity:1; }
+  100% { transform:scale(2); opacity:0; }
+}
 
-    #yesBtn {
-      background: #fff;
-      color: #ff1e56;
-      left: 40%;
-    }
+/* Rose fall */
+@keyframes fall {
+  to { transform:translateY(110vh); opacity:0; }
+}
 
-    #noBtn {
-      background: #ff1e56;
-      color: white;
-      left: 55%;
-    }
-
-    #successMessage {
-      display: none;
-      font-size: 1.5rem;
-      margin-top: 20px;
-      animation: fadeIn 1s forwards;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    /* Music player */
-    .music-player {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      background: rgba(255,255,255,0.2);
-      padding: 10px 15px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2rem; }
-      .message { font-size: 1rem; padding: 0 10px; }
-    }
-  </style>
+@media (max-width:600px){
+  h1{font-size:2rem;}
+  .message{font-size:1rem;padding:0 10px;}
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <div class="cupid">💘</div>
-    <h1>Hey Akshu ❤️</h1>
-  </header>
+<header>
+  <div class="cupid">💘</div>
+  <h1>Hey Akshu ❤️</h1>
+</header>
 
-  <div class="message">
-    From doing potato together 🥔 to sharing pasta dates 🍝,  
-    from endless kisses 😘 to that handsome goatee I secretly love 😍 —  
-    every tiny moment with you feels like magic ✨  
-    You love small cute things… so here’s one more 💖
-  </div>
+<div class="message">
+  From doing potato together 🥔 to sharing pasta dates 🍝,  
+  from endless kisses 😘 to that handsome goatee I secretly love 😍 —  
+  every tiny moment with you feels like magic ✨  
+  You love small cute things… so here’s one more 💖  
+</div>
 
-  <div class="memories">
-    <div class="card">🥔<br>Doing Potato</div>
-    <div class="card">🍝<br>Pasta Dates</div>
-    <div class="card">😘<br>All the Kisses</div>
-    <div class="card">🧔<br>The Goatee</div>
-  </div>
+<div class="memories">
+  <div class="card">🥔<br>Doing Potato</div>
+  <div class="card">🍝<br>Pasta Dates</div>
+  <div class="card">😘<br>All the Kisses</div>
+  <div class="card">🧔<br>The Goatee</div>
+</div>
 
-  <div class="buttons">
-    <button id="yesBtn">Yes 💖</button>
-    <button id="noBtn">No 🙈</button>
-  </div>
+<div class="buttons">
+  <button id="yesBtn">Yes 💖</button>
+  <button id="noBtn">No 🙈</button>
+</div>
 
-  <div id="successMessage">YAYYY 💍💖 You just made me the happiest person alive!!! 🥰</div>
+<div id="successMessage">
+  YAYYY 💍💖 You just made me the happiest person alive!!! 🥰
+</div>
 
-  <!-- Music -->
-  <div class="music-player">
-    🎵 Our Song  
-    <audio id="bgMusic" loop>
-      <source src="song.mp3" type="audio/mpeg">
-    </audio>
-    <button onclick="toggleMusic()">Play / Pause</button>
-  </div>
+<audio id="bgMusic" src="song.mp3"></audio>
 
-  <script>
-    // Floating hearts
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
-    setInterval(createHeart, 400);
+<script>
+/* Floating hearts */
+function createHeart(){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+3)+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,400);
 
-    // No button runs away
-    const noBtn = document.getElementById("noBtn");
-    noBtn.addEventListener("mouseover", () => {
-      noBtn.style.left = Math.random() * 80 + "%";
-      noBtn.style.top = Math.random() * 80 + "%";
-    });
+/* No button runs away */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.left=Math.random()*80+"%";
+  noBtn.style.top=Math.random()*80+"%";
+});
 
-    // Yes button celebration
-    const yesBtn = document.getElementById("yesBtn");
-    const successMessage = document.getElementById("successMessage");
-    yesBtn.addEventListener("click", () => {
-      successMessage.style.display = "block";
-      alert("She said YES!!! 💖🎉");
-    });
+/* Yes button celebration */
+const yesBtn=document.getElementById("yesBtn");
+const successMessage=document.getElementById("successMessage");
+const music=document.getElementById("bgMusic");
 
-    // Music toggle
-    const music = document.getElementById("bgMusic");
-    function toggleMusic() {
-      if (music.paused) music.play();
-      else music.pause();
-    }
-  </script>
+yesBtn.addEventListener("click",()=>{
+  successMessage.style.display="block";
+  launchFireworks();
+  startRoseShower();
+  music.play();
+});
+
+/* Fireworks */
+function launchFireworks(){
+  for(let i=0;i<25;i++){
+    const fw=document.createElement("div");
+    fw.innerHTML="✨";
+    fw.style.position="fixed";
+    fw.style.left=Math.random()*100+"vw";
+    fw.style.top=Math.random()*100+"vh";
+    fw.style.fontSize=Math.random()*20+20+"px";
+    fw.style.animation="explode 1s ease-out forwards";
+    document.body.appendChild(fw);
+    setTimeout(()=>fw.remove(),1000);
+  }
+}
+
+/* Rose shower */
+function startRoseShower(){
+  let interval=setInterval(()=>{
+    const rose=document.createElement("div");
+    rose.innerHTML="🌹";
+    rose.style.position="fixed";
+    rose.style.top="-20px";
+    rose.style.left=Math.random()*100+"vw";
+    rose.style.fontSize="24px";
+    rose.style.animation="fall 4s linear forwards";
+    document.body.appendChild(rose);
+    setTimeout(()=>rose.remove(),4000);
+  },200);
+
+  setTimeout(()=>clearInterval(interval),4000);
+}
+</script>
 
 </body>
 </html>
