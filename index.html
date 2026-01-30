@@ -23,41 +23,34 @@ body {
   font-size:20px;
   animation:floatUp linear forwards;
 }
-@keyframes floatUp {
-  to { transform:translateY(-110vh); opacity:0; }
-}
+@keyframes floatUp { to { transform:translateY(-110vh); opacity:0; } }
 
-header { padding-top:60px; }
+header { padding:50px 15px 10px; }
 
 h1 {
   font-size:3rem;
   animation:pulse 2s infinite;
 }
-@keyframes pulse {
-  0%,100% { transform:scale(1); }
-  50% { transform:scale(1.05); }
-}
+@keyframes pulse { 50% { transform:scale(1.05); } }
 
 .cupid {
-  font-size:2rem;
+  font-size:2.2rem;
   animation:bounce 1.5s infinite;
 }
-@keyframes bounce {
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-}
+@keyframes bounce { 50% { transform:translateY(-10px); } }
 
 .message {
-  margin:40px auto;
-  max-width:600px;
-  font-size:1.2rem;
-  line-height:1.6;
+  margin:30px auto;
+  max-width:650px;
+  font-size:1.15rem;
+  line-height:1.7;
+  padding:0 15px;
 }
 
 .memories {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:20px;
+  gap:18px;
   padding:20px;
   max-width:800px;
   margin:auto;
@@ -70,43 +63,35 @@ h1 {
   backdrop-filter:blur(10px);
   transition:transform 0.3s, background 0.3s;
 }
-.card:hover {
-  transform:scale(1.08);
-  background:rgba(255,255,255,0.25);
-}
+.card:hover { transform:scale(1.08); background:rgba(255,255,255,0.25); }
 
 .buttons {
-  margin:40px 0;
+  margin:40px auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
   position:relative;
-  height:140px;
+  min-height:120px;
 }
 
 button {
-  padding:12px 25px;
+  padding:14px 28px;
   font-size:1rem;
   border:none;
-  border-radius:25px;
+  border-radius:30px;
   cursor:pointer;
-  position:absolute;
   transition:all 0.3s ease;
 }
 
-#yesBtn {
-  background:#fff;
-  color:#ff1e56;
-  left:35%;
-}
-
-#noBtn {
-  background:#ff1e56;
-  color:white;
-  left:55%;
-}
+#yesBtn { background:#fff; color:#ff1e56; }
+#noBtn { background:#ff1e56; color:white; position:relative; }
 
 #successMessage {
   display:none;
   font-size:1.6rem;
-  margin-top:20px;
+  margin:20px 15px;
   animation:fadeIn 1s forwards;
 }
 @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
@@ -122,9 +107,11 @@ button {
   to { transform:translateY(110vh); opacity:0; }
 }
 
+/* Mobile Tweaks */
 @media (max-width:600px){
-  h1{font-size:2rem;}
-  .message{font-size:1rem;padding:0 10px;}
+  h1 { font-size:2.2rem; }
+  .message { font-size:1rem; }
+  button { width:140px; }
 }
 </style>
 </head>
@@ -159,7 +146,7 @@ button {
   YAYYY 💍💖 You just made me the happiest person alive!!! 🥰
 </div>
 
-<audio id="bgMusic" src="song.mp3"></audio>
+<audio id="bgMusic" src="song.mp3" autoplay loop muted playsinline></audio>
 
 <script>
 /* Floating hearts */
@@ -174,22 +161,29 @@ function createHeart(){
 }
 setInterval(createHeart,400);
 
-/* No button runs away */
+/* Make music audible after first interaction */
+const music=document.getElementById("bgMusic");
+document.body.addEventListener("click",()=>{ music.muted=false; },{once:true});
+
+/* No button runs away (still works on mobile tap) */
 const noBtn=document.getElementById("noBtn");
-noBtn.addEventListener("mouseover",()=>{
-  noBtn.style.left=Math.random()*80+"%";
-  noBtn.style.top=Math.random()*80+"%";
-});
+noBtn.addEventListener("mouseover",moveNoBtn);
+noBtn.addEventListener("touchstart",moveNoBtn);
+function moveNoBtn(){
+  noBtn.style.position="absolute";
+  noBtn.style.left=Math.random()*70+"%";
+  noBtn.style.top=Math.random()*60+"px";
+}
 
 /* Yes button celebration */
 const yesBtn=document.getElementById("yesBtn");
 const successMessage=document.getElementById("successMessage");
-const music=document.getElementById("bgMusic");
 
 yesBtn.addEventListener("click",()=>{
   successMessage.style.display="block";
   launchFireworks();
   startRoseShower();
+  music.muted=false;
   music.play();
 });
 
