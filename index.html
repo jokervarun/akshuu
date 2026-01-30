@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hey Akshu ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<!-- Romantic + Cute Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:'Poppins',sans-serif;
+  font-family:'Quicksand',sans-serif;
   color:white;
   text-align:center;
   overflow-x:hidden;
@@ -32,7 +33,7 @@ body{
   cursor:pointer;
 }
 #introScreen h2{
-  font-family:'Great Vibes',cursive;
+  font-family:'Pacifico',cursive;
   font-size:2.5rem;
 }
 #introScreen p{margin-top:10px;font-size:1rem;opacity:0.9}
@@ -51,16 +52,17 @@ body{
 
 header{padding:60px 15px 20px}
 h1{
-  font-family:'Great Vibes',cursive;
-  font-size:3rem;
-  text-shadow:0 0 15px rgba(255,255,255,0.5);
+  font-family:'Pacifico',cursive;
+  font-size:3.2rem;
+  letter-spacing:1px;
+  text-shadow:0 4px 12px rgba(0,0,0,0.25);
 }
 
 /* TIMER */
 .timer{
   margin-top:15px;
-  font-size:1rem;
-  font-weight:bold;
+  font-size:1.05rem;
+  font-weight:600;
   background:rgba(255,255,255,0.15);
   display:inline-block;
   padding:10px 18px;
@@ -76,6 +78,7 @@ h1{
   border-radius:20px;
   backdrop-filter:blur(10px);
   line-height:1.7;
+  font-size:1.15rem;
 }
 
 /* MEMORY CARDS */
@@ -93,6 +96,8 @@ h1{
   padding:18px;
   backdrop-filter:blur(12px);
   transition:0.3s;
+  font-weight:600;
+  font-size:1.05rem;
 }
 .card:hover{
   transform:translateY(-6px) scale(1.05);
@@ -102,7 +107,7 @@ h1{
 /* PHOTO GALLERY */
 .gallery{ padding:30px 15px; }
 .gallery h2{
-  font-family:'Great Vibes',cursive;
+  font-family:'Pacifico',cursive;
   font-size:2.2rem;
   margin-bottom:15px;
 }
@@ -140,6 +145,8 @@ button{
   cursor:pointer;
   box-shadow:0 8px 20px rgba(0,0,0,0.25);
   transition:transform 0.2s ease;
+  font-family:'Quicksand',sans-serif;
+  letter-spacing:1px;
 }
 
 #yesBtn{background:white;color:#ff1e56;}
@@ -283,7 +290,7 @@ yesBtn.addEventListener("click",()=>{
   startRoseShower();
 });
 
-/* EXTRA Fireworks */
+/* Fireworks */
 function launchFireworks(){
   for(let i=0;i<60;i++){
     const fw=document.createElement("div");
@@ -298,7 +305,7 @@ function launchFireworks(){
   }
 }
 
-/* HEAVY Rose Rain */
+/* Rose Rain */
 function startRoseShower(){
   let interval=setInterval(()=>{
     const rose=document.createElement("div");
