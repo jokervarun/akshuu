@@ -4,169 +4,193 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hey Akshu ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-  font-family:'Quicksand', sans-serif;
-  background: radial-gradient(circle at top, #ff6fa3, #ff1e56 60%);
+body{
+  font-family:'Poppins',sans-serif;
   color:white;
   text-align:center;
   overflow-x:hidden;
+  background:linear-gradient(135deg,#ff4e88,#ff1e56,#ff6fa3);
 }
 
-/* ENTRY SCREEN */
-#introScreen {
+/* ENTRY WARNING SCREEN */
+#introScreen{
   position:fixed;
   inset:0;
-  background:linear-gradient(135deg,#ff4e88,#ff1e56);
+  background:radial-gradient(circle,#ff6fa3,#ff1e56);
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   z-index:9999;
-  cursor:pointer;
-  text-align:center;
   padding:20px;
+  cursor:pointer;
 }
-#introScreen h2 {
-  font-family:'Great Vibes', cursive;
-  font-size:2.8rem;
-  margin-bottom:15px;
+#introScreen h2{
+  font-family:'Great Vibes',cursive;
+  font-size:2.5rem;
 }
-#introScreen p { opacity:0.9; }
+#introScreen p{margin-top:10px;font-size:1rem;opacity:0.9}
 
-/* Floating hearts */
-.heart {
+/* FLOATING HEART BACKGROUND */
+.bg-heart{
   position:fixed;
-  bottom:-10px;
-  font-size:20px;
-  animation:floatUp linear forwards;
-  opacity:0.8;
+  font-size:22px;
+  animation:floatBg linear infinite;
+  opacity:0.25;
 }
-@keyframes floatUp { to { transform:translateY(-110vh); opacity:0; } }
+@keyframes floatBg{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-120vh)}
+}
 
-header { padding:60px 15px 20px; }
-
-h1 {
-  font-family:'Great Vibes', cursive;
-  font-size:3.2rem;
+header{padding:60px 15px 20px}
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:3rem;
   text-shadow:0 0 15px rgba(255,255,255,0.5);
 }
 
-.cupid { font-size:2rem; margin-bottom:10px; }
-
-.message {
+.message{
   margin:25px auto;
-  max-width:600px;
-  font-size:1.1rem;
-  line-height:1.8;
+  max-width:650px;
   background:rgba(255,255,255,0.12);
   padding:20px;
   border-radius:20px;
   backdrop-filter:blur(10px);
+  line-height:1.7;
 }
 
-/* Memory Cards */
-.memories {
+/* MEMORY CARDS */
+.memories{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
   gap:18px;
   padding:20px;
   max-width:800px;
   margin:auto;
 }
-.card {
+.card{
   background:rgba(255,255,255,0.18);
   border-radius:18px;
   padding:18px;
   backdrop-filter:blur(12px);
-  transition:transform 0.3s, box-shadow 0.3s;
+  transition:0.3s;
 }
-.card:hover {
+.card:hover{
   transform:translateY(-6px) scale(1.05);
   box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Buttons */
-.buttons {
+/* PHOTO GALLERY */
+.gallery{
+  padding:30px 15px;
+}
+.gallery h2{
+  font-family:'Great Vibes',cursive;
+  font-size:2.2rem;
+  margin-bottom:15px;
+}
+.photos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:15px;
+  max-width:800px;
+  margin:auto;
+}
+.photos img{
+  width:100%;
+  border-radius:15px;
+  object-fit:cover;
+  aspect-ratio:1/1;
+  transition:0.3s;
+}
+.photos img:hover{
+  transform:scale(1.08);
+}
+
+/* BUTTONS */
+.buttons{
   margin:35px auto;
   display:flex;
   justify-content:center;
   gap:20px;
   flex-wrap:wrap;
 }
-button {
+button{
   padding:14px 28px;
   font-size:1rem;
   border:none;
   border-radius:30px;
   cursor:pointer;
-  transition:all 0.3s ease;
 }
-#yesBtn {
-  background:white;
-  color:#ff1e56;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-#noBtn {
-  background:#ff1e56;
-  color:white;
-  position:relative;
-}
+#yesBtn{background:white;color:#ff1e56;}
+#noBtn{background:#ff1e56;color:white;position:relative;}
 
-#successMessage {
+#successMessage{
   display:none;
   font-size:1.6rem;
   margin:20px;
   animation:fadeIn 1s forwards;
 }
-@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 
 /* Fireworks */
-@keyframes explode {
-  0% { transform:scale(0); opacity:1; }
-  100% { transform:scale(2); opacity:0; }
+@keyframes explode{
+  0%{transform:scale(0);opacity:1;}
+  100%{transform:scale(2);opacity:0;}
 }
 
 /* Roses */
-@keyframes fall { to { transform:translateY(110vh); opacity:0; } }
+@keyframes fall{to{transform:translateY(110vh);opacity:0;}}
 
-/* Mobile */
-@media (max-width:600px){
-  h1 { font-size:2.5rem; }
-  .message { font-size:1rem; }
+@media(max-width:600px){
+  h1{font-size:2.4rem}
+  .message{font-size:0.95rem}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Romantic Tap Screen -->
+<!-- Funny Warning Screen -->
 <div id="introScreen">
-  <h2>For Akshu 💖</h2>
-  <p>Tap anywhere to open something special ✨</p>
+  <h2>⚠️ Warning ⚠️</h2>
+  <p>Entering this website may cause extreme smiling, blushing, and sudden feelings of love 💖<br>Tap at your own risk 😌</p>
 </div>
 
 <header>
-  <div class="cupid">💘</div>
   <h1>Hey Akshu ❤️</h1>
 </header>
 
 <div class="message">
-  From doing potato together 🥔 to sharing pasta dates 🍝,<br>
-  from endless kisses 😘 to that handsome goatee I secretly love 😍 —<br>
+  From sharing pasta dates 🍝,<br>
+  to endless kisses 😘 and that handsome goatee I secretly love 😍 —<br>
   every tiny moment with you feels like magic ✨<br>
   You love small cute things… so here’s one more 💖
 </div>
 
 <div class="memories">
-  <div class="card">🥔<br>Doing Potato</div>
   <div class="card">🍝<br>Pasta Dates</div>
   <div class="card">😘<br>All the Kisses</div>
   <div class="card">🧔<br>The Goatee</div>
+  <div class="card">💞<br>Our Little World</div>
+</div>
+
+<!-- PHOTO GALLERY -->
+<div class="gallery">
+  <h2>Our Cute Memories 📸</h2>
+  <div class="photos">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+  </div>
 </div>
 
 <div class="buttons">
@@ -185,23 +209,23 @@ button {
 <script>
 const music=document.getElementById("bgMusic");
 
-/* Intro tap starts music */
+/* Intro click starts music */
 document.getElementById("introScreen").addEventListener("click",()=>{
   music.play();
   document.getElementById("introScreen").style.display="none";
 });
 
-/* Floating hearts */
-function createHeart(){
+/* Moving background hearts */
+function createBgHeart(){
   const heart=document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="❤️";
+  heart.className="bg-heart";
+  heart.innerHTML="💖";
   heart.style.left=Math.random()*100+"vw";
-  heart.style.animationDuration=(Math.random()*3+3)+"s";
+  heart.style.animationDuration=(Math.random()*5+5)+"s";
   document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),6000);
+  setTimeout(()=>heart.remove(),10000);
 }
-setInterval(createHeart,400);
+setInterval(createBgHeart,500);
 
 /* No button runs */
 const noBtn=document.getElementById("noBtn");
