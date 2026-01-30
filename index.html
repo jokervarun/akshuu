@@ -88,9 +88,7 @@ h1{
 }
 
 /* PHOTO GALLERY */
-.gallery{
-  padding:30px 15px;
-}
+.gallery{ padding:30px 15px; }
 .gallery h2{
   font-family:'Great Vibes',cursive;
   font-size:2.2rem;
@@ -110,27 +108,32 @@ h1{
   aspect-ratio:1/1;
   transition:0.3s;
 }
-.photos img:hover{
-  transform:scale(1.08);
-}
+.photos img:hover{ transform:scale(1.08); }
 
 /* BUTTONS */
 .buttons{
-  margin:35px auto;
+  margin:50px auto;
   display:flex;
   justify-content:center;
-  gap:20px;
+  gap:25px;
   flex-wrap:wrap;
+  position:relative;
+  min-height:200px;
 }
+
 button{
-  padding:14px 28px;
-  font-size:1rem;
+  padding:18px 40px;
+  font-size:1.3rem;
   border:none;
-  border-radius:30px;
+  border-radius:40px;
+  font-weight:bold;
   cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  transition:0.3s;
 }
+
 #yesBtn{background:white;color:#ff1e56;}
-#noBtn{background:#ff1e56;color:white;position:relative;}
+#noBtn{background:#ff1e56;color:white;position:absolute;}
 
 #successMessage{
   display:none;
@@ -175,11 +178,12 @@ button{
   every tiny moment with you feels like magic ✨<br>
   You love small cute things… so here’s one more 💖
 </div>
+
 <div class="memories">
-  <div class="card">🍝<br>Pasta Dates</div>
+  <div class="card">🛵<br>Scooter Rides</div>
+  <div class="card">🗣️<br>Our Small Talks</div>
   <div class="card">😘<br>All the Kisses</div>
   <div class="card">🧔<br>The Goatee</div>
-  <div class="card">🛵<br>Scooter Rides</div>
 </div>
 
 <!-- PHOTO GALLERY -->
@@ -199,7 +203,7 @@ button{
 </div>
 
 <div id="successMessage">
-  my cute pandi nigger 🥰
+  YAYYY 💍💖 You just made me the happiest person alive!!! 🥰
 </div>
 
 <audio id="bgMusic" loop preload="auto">
@@ -209,7 +213,7 @@ button{
 <script>
 const music=document.getElementById("bgMusic");
 
-/* Intro click starts music */
+/* Start music after intro tap */
 document.getElementById("introScreen").addEventListener("click",()=>{
   music.play();
   document.getElementById("introScreen").style.display="none";
@@ -227,12 +231,11 @@ function createBgHeart(){
 }
 setInterval(createBgHeart,500);
 
-/* No button runs */
+/* No button limited wandering */
 const noBtn=document.getElementById("noBtn");
 function moveNoBtn(){
-  noBtn.style.position="absolute";
-  noBtn.style.left=Math.random()*70+"%";
-  noBtn.style.top=Math.random()*60+"px";
+  noBtn.style.left = (20 + Math.random()*60) + "%";
+  noBtn.style.top = (250 + Math.random()*120) + "px";
 }
 noBtn.addEventListener("mouseover",moveNoBtn);
 noBtn.addEventListener("touchstart",moveNoBtn);
@@ -247,9 +250,9 @@ yesBtn.addEventListener("click",()=>{
   startRoseShower();
 });
 
-/* Fireworks */
+/* EXTRA Fireworks */
 function launchFireworks(){
-  for(let i=0;i<25;i++){
+  for(let i=0;i<60;i++){
     const fw=document.createElement("div");
     fw.innerHTML="✨";
     fw.style.position="fixed";
@@ -262,7 +265,7 @@ function launchFireworks(){
   }
 }
 
-/* Roses */
+/* HEAVY Rose Rain */
 function startRoseShower(){
   let interval=setInterval(()=>{
     const rose=document.createElement("div");
@@ -270,12 +273,13 @@ function startRoseShower(){
     rose.style.position="fixed";
     rose.style.top="-20px";
     rose.style.left=Math.random()*100+"vw";
-    rose.style.fontSize="24px";
-    rose.style.animation="fall 4s linear forwards";
+    rose.style.fontSize="26px";
+    rose.style.animation="fall 5s linear forwards";
     document.body.appendChild(rose);
-    setTimeout(()=>rose.remove(),4000);
-  },200);
-  setTimeout(()=>clearInterval(interval),4000);
+    setTimeout(()=>rose.remove(),5000);
+  },100);
+
+  setTimeout(()=>clearInterval(interval),7000);
 }
 </script>
 
