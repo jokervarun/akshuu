@@ -18,7 +18,7 @@ body{
   background:linear-gradient(135deg,#ff4e88,#ff1e56,#ff6fa3);
 }
 
-/* ENTRY WARNING SCREEN */
+/* ENTRY SCREEN */
 #introScreen{
   position:fixed;
   inset:0;
@@ -117,23 +117,21 @@ h1{
   justify-content:center;
   gap:25px;
   flex-wrap:wrap;
-  position:relative;
-  min-height:200px;
 }
 
 button{
-  padding:18px 40px;
-  font-size:1.3rem;
+  padding:20px 45px;
+  font-size:1.4rem;
   border:none;
-  border-radius:40px;
+  border-radius:45px;
   font-weight:bold;
   cursor:pointer;
   box-shadow:0 8px 20px rgba(0,0,0,0.25);
-  transition:0.3s;
+  transition:transform 0.2s ease;
 }
 
 #yesBtn{background:white;color:#ff1e56;}
-#noBtn{background:#ff1e56;color:white;position:absolute;}
+#noBtn{background:#ff1e56;color:white;}
 
 #successMessage{
   display:none;
@@ -161,7 +159,6 @@ button{
 
 <body>
 
-<!-- Funny Warning Screen -->
 <div id="introScreen">
   <h2>⚠️ Warning ⚠️</h2>
   <p>Entering this website may cause extreme smiling, blushing, and sudden feelings of love 💖<br>Tap at your own risk 😌</p>
@@ -186,7 +183,6 @@ button{
   <div class="card">🧔<br>The Goatee</div>
 </div>
 
-<!-- PHOTO GALLERY -->
 <div class="gallery">
   <h2>Our Cute Memories 📸</h2>
   <div class="photos">
@@ -212,14 +208,12 @@ button{
 
 <script>
 const music=document.getElementById("bgMusic");
-
-/* Start music after intro tap */
 document.getElementById("introScreen").addEventListener("click",()=>{
   music.play();
   document.getElementById("introScreen").style.display="none";
 });
 
-/* Moving background hearts */
+/* Floating background hearts */
 function createBgHeart(){
   const heart=document.createElement("div");
   heart.className="bg-heart";
@@ -231,19 +225,23 @@ function createBgHeart(){
 }
 setInterval(createBgHeart,500);
 
-/* No button limited wandering */
-const noBtn=document.getElementById("noBtn");
-function moveNoBtn(){
-  noBtn.style.left = (20 + Math.random()*60) + "%";
-  noBtn.style.top = (250 + Math.random()*120) + "px";
-}
-noBtn.addEventListener("mouseover",moveNoBtn);
-noBtn.addEventListener("touchstart",moveNoBtn);
-
-/* Yes button magic */
+/* Button size game */
 const yesBtn=document.getElementById("yesBtn");
-const successMessage=document.getElementById("successMessage");
+const noBtn=document.getElementById("noBtn");
+let yesScale=1;
+let noScale=1;
 
+noBtn.addEventListener("click",()=>{
+  yesScale+=0.15;
+  noScale-=0.1;
+  if(noScale<0.4) noScale=0.4;
+
+  yesBtn.style.transform=`scale(${yesScale})`;
+  noBtn.style.transform=`scale(${noScale})`;
+});
+
+/* Yes celebration */
+const successMessage=document.getElementById("successMessage");
 yesBtn.addEventListener("click",()=>{
   successMessage.style.display="block";
   launchFireworks();
@@ -278,7 +276,6 @@ function startRoseShower(){
     document.body.appendChild(rose);
     setTimeout(()=>rose.remove(),5000);
   },100);
-
   setTimeout(()=>clearInterval(interval),7000);
 }
 </script>
